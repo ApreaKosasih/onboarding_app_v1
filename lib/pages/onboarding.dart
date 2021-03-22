@@ -86,14 +86,29 @@ class Slider extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(
-            height: 56,
+          Container(
+            padding: EdgeInsets.only(top: 72),
+            margin: EdgeInsets.only(left: 56, right: 56),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 28,
+                  color: Colors.lightBlue[900]),
+            ),
           ),
-          Text(title),
-          SizedBox(
-            height: 450,
+          Container(
+            padding: EdgeInsets.only(top: 300),
+            margin: EdgeInsets.all(48),
+            child: Text(
+              desc,
+              style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: Colors.white),
+            ),
           ),
-          Text(desc),
         ],
       ),
     );
