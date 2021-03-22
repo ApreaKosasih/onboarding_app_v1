@@ -21,11 +21,11 @@ class _HomeState extends State<Home> {
 
   Widget pageIndexIndicator(bool isCurrentPage) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 2.0),
+      margin: EdgeInsets.symmetric(horizontal: 2.0),
       height: isCurrentPage ? 10.0 : 6.0,
       width: isCurrentPage ? 10.0 : 6.0,
       decoration: BoxDecoration(
-          color: isCurrentPage ? Colors.grey : Colors.grey[300],
+          color: isCurrentPage ? Colors.lightBlue[900] : Colors.grey[300],
           borderRadius: BorderRadius.circular(12)),
     );
   }
@@ -49,9 +49,11 @@ class _HomeState extends State<Home> {
           }),
       bottomSheet: currentIndex != slides.length - 1
           ? Container(
+              height: 72,
+              padding: EdgeInsets.symmetric(horizontal: 32),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(onTap: () {}, child: Text("Skip")),
                   Row(
                     children: [
                       for (int i = 0; i < slides.length; i++)
@@ -60,12 +62,27 @@ class _HomeState extends State<Home> {
                             : pageIndexIndicator(false)
                     ],
                   ),
-                  InkWell(onTap: () {}, child: Text("Next")),
+                  GestureDetector(onTap: () {}, child: Text("Next")),
                 ],
               ),
             )
           : Container(
-              child: Text(""),
+              height: 72,
+              padding: EdgeInsets.symmetric(horizontal: 32),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      for (int i = 0; i < slides.length; i++)
+                        currentIndex == i
+                            ? pageIndexIndicator(true)
+                            : pageIndexIndicator(false)
+                    ],
+                  ),
+                  GestureDetector(onTap: () {}, child: Text("Skip")),
+                ],
+              ),
             ),
     );
   }
