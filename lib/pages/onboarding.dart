@@ -10,6 +10,7 @@ class _HomeState extends State<Home> {
   // ignore: deprecated_member_use
   List<SliderModel> slides = new List<SliderModel>();
   int currentIndex = 0;
+  PageController pageController = new PageController(initialPage: 0);
 
   @override
   void initState() {
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView.builder(
+          controller: pageController,
           itemCount: slides.length,
           onPageChanged: (val) {
             setState(() {
@@ -62,7 +64,20 @@ class _HomeState extends State<Home> {
                             : pageIndexIndicator(false)
                     ],
                   ),
-                  GestureDetector(onTap: () {}, child: Text("Next")),
+                  SizedBox(
+                    width: 150,
+                    child: ElevatedButton(
+                        onPressed: () {
+                          pageController.animateToPage(currentIndex + 1,
+                              duration: Duration(milliseconds: 400),
+                              curve: Curves.linear);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0)),
+                        ),
+                        child: Text("Next")),
+                  ),
                 ],
               ),
             )
@@ -80,7 +95,16 @@ class _HomeState extends State<Home> {
                             : pageIndexIndicator(false)
                     ],
                   ),
-                  GestureDetector(onTap: () {}, child: Text("Skip")),
+                  SizedBox(
+                    width: 150,
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(20.0)),
+                        ),
+                        child: Text("Get Started")),
+                  )
                 ],
               ),
             ),
