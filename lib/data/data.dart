@@ -58,7 +58,8 @@ List<SliderModel> getSlide() {
   //3
   sliderModel.setImgAssetsPath("assets/bg3.png");
   sliderModel.setTitle("Daftar\nSekarang !");
-  sliderModel.setDesc("");
+  sliderModel.setDesc(
+      "Gunakan berbagai macam fitur dari eduNitas yang akan memberikan kamu kemudahan dalam menjalani aktivitas perkuliahan");
 
   slides.add(sliderModel);
 
